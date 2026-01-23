@@ -1,0 +1,426 @@
+/* Grundläggande inställningar för body */
+body {
+    font-family: Arial, sans-serif;
+    /* Sätter typsnitt för hela sidan */
+    margin: 0;
+    /* Tar bort standardmarginaler */
+    padding: 0;
+    /* Tar bort standardpadding */
+    box-sizing: border-box;
+    /* Inkluderar padding och border i elementens totala bredd/höjd */
+}
+
+/* Sidomeny (sidebar) */
+.sidebar {
+    width: 100px;
+    /* Smal initial bredd */
+    position: fixed;
+    /* Fäster sidomenyn vid vänsterkanten */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    /* Sträcker sig från toppen till botten */
+    background-color: #444087;
+    /* Bakgrundsfärg */
+    color: white;
+    /* Textfärg */
+    display: flex;
+    /* Använder flexbox för layout */
+    flex-direction: column;
+    /* Staplar innehåll vertikalt */
+    justify-content: center;
+    /* Centrering av innehåll vertikalt */
+    align-items: center;
+    /* Centrering horisontellt */
+    height: 100vh;
+    /* Full höjd av viewporten */
+    transition: width 0.3s ease, box-shadow 0.3s ease;
+    /* Mjuk övergång vid förändring av bredd och skugga */
+    /* box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);   Lätt skugga för att skapa separering från huvudområdet */
+}
+
+/* Navigeringsdel i sidebar */
+.sidebar nav {
+    height: 100%;
+    /* Gör att nav tar hela sidans höjd */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centrering av innehållet vertikalt */
+    align-items: center;
+}
+
+/* När musen hovrar över sidebar */
+.sidebar:hover {
+    width: 220px;
+    /* Expanderar sidomenyn */
+}
+
+/* Lista med länkar i sidebar */
+.sidebar nav ul {
+    list-style-type: none;
+    /* Tar bort punktlistan */
+    padding: 0;
+    width: 100%;
+    /* Gör listan lika bred som sidomenyn */
+}
+
+/* Listobjekt (menyalternativ) */
+.sidebar nav ul li {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    /* Utrymme ovanför och under varje objekt */
+    transition: background-color 0.3s;
+    /* Mjuk övergång för hover-effekt */
+    border-radius: 10px;
+}
+
+/* Hover-effekt på listobjekt */
+.sidebar nav ul li:hover {
+    background-color: #3b3770;
+    /* Ändrar bakgrundsfärgen vid hover */
+    box-shadow: 0 6px 20px rgba(51, 50, 50, 0.4);
+    /* Lägg till skugga för att skapa djup */
+    transition: all 0.3s ease;
+    width: 170px;
+    margin-left: 20px;
+    border-radius: 10px;
+
+}
+
+/* Länkar i sidomenyn */
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    /* Tar bort understrykning från länkar */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+    /* Gör texten fetare */
+    margin-left: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Smidig övergång för hover */
+}
+
+/* Ikoner i menyn */
+.sidebar nav ul li img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    /* Avstånd mellan ikon och text */
+}
+
+/* Text bredvid ikonen */
+.sidebar nav ul li span {
+    display: none;
+    /* Texten bredvid ikoner är gömd som standard */
+    white-space: nowrap;
+}
+
+/* Visa texten bredvid ikonerna när sidomenyn expanderar */
+.sidebar:hover nav ul li span {
+    display: inline;
+}
+
+/* Huvudinnehåll (Main content) */
+.main-content {
+    margin-left: 80px;
+    /* Skjut innehållet till höger så det inte täcks av sidomenyn */
+    padding: 50px;
+    transition: margin-left 0.3s ease;
+    /* Mjuk övergång när sidomenyn expanderar */
+}
+
+/* Justering av huvudsektionen när sidomenyn expanderar */
+.sidebar:hover+.main-content {
+    margin-left: 220px;
+}
+
+/* Sektioner på sidan */
+.section {
+    padding: 40px;
+    min-height: 100vh;
+    /* Varje sektion tar upp hela skärmhöjden */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    /* Begränsar maxbredden */
+    margin: 0 auto;
+    /* Centrera sektionen horisontellt */
+}
+
+/* Profilcontainer */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 70px;
+    /* Avstånd mellan profilbild och text */
+    flex-wrap: wrap;
+    /* Låter innehållet radbrytas vid små skärmar */
+}
+
+/* Profilbild */
+.profile-img {
+    flex: 0 0 300px;
+    /* Sätter fast storlek på profilbild */
+}
+
+.profile-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Se till att bilden behåller rätt proportion */
+    border: 5px solid #444087;
+    border-radius: 50%;
+    /* Gör profilbilden rund */
+}
+
+/* Textdel av profilen */
+.profile-text {
+    flex: 1;
+    max-width: 800px;
+}
+
+/* Stilar för rubriker */
+.profile-text h1 {
+    font-size: 3em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.profile-text h2 {
+    font-size: 1.9em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.profile-text p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Navigeringsknappar */
+.button-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.next-button {
+    padding: 15px 30px;
+    background-color: #444087;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #3b3770;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.skill span {
+    font-weight: 600;
+}
+
+.bar {
+    background: #ddd;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #444087;
+    border-radius: 5px;
+}
+
+/* =====================
+   Projects
+===================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: #f4f4f8;
+    padding: 25px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+    margin-top: 0;
+}
+
+.tech-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.tech-list li {
+    background-color: #444087;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.project-links a {
+    color: #444087;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =====================
+   Contact
+===================== */
+.contact-card {
+    max-width: 600px;
+    background-color: #f4f4f8;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.contact-card p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-list li {
+    font-size: 1rem;
+}
+
+.contact-list a {
+    color: #444087;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================
+   Dark Mode
+===================== */
+.dark-mode {
+    background-color: #1e1e2f;
+    color: #c7c7c7;
+}
+
+/* Ändra sidomenyn i dark mode */
+.dark-mode .sidebar {
+    background-color: #2b2b4b;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .sidebar nav ul li:hover {
+    background-color: #44406f;
+}
+
+/* Länkar i dark mode */
+.dark-mode .sidebar nav ul li a {
+    color: #f1f1f1;
+}
+
+/* Profiltext i dark mode */
+.dark-mode .profile-text h1,
+.dark-mode .profile-text h2 {
+    color: #f1f1f1;
+}
+
+.dark-mode .profile-text p {
+    color: #b0b0b0;
+}
+
+/* Projektlänkar i dark mode */
+.dark-mode .project a {
+    color: #9995ff;
+}
+
+.dark-mode .project a:hover {
+    text-decoration: underline;
+    color: #ffdd57;
+}
+
+/* Knappar i dark mode */
+.dark-mode .next-button {
+    background-color: #2b2b4b;
+    color: white;
+}
+
+.dark-mode .next-button:hover {
+    background-color: #3b3770;
+}
+
+.dark-mode .bar {
+    background: #ddd;
+}
+
+.dark-mode .fill {
+    background: #444087;
+}
+
+.dark-mode .project-card {
+    background-color: #2b2b4b;
+}
+
+.dark-mode .project-links a {
+    color: #ffdd57;
+}
+
+.dark-mode .contact-card {
+    background-color: #2b2b4b;
+}
+
+.dark-mode .contact-list a {
+    color: #ffdd57;
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Sidomeny -->
+    <div class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#home">
+                        <img src="home.png" alt="Hem" />
+                        <span>Hem</span>
+                    </a></li>
+                <li><a href="#skills">
+                        <img src="code.png" alt="Färdigheter" />
+                        <span>Färdigheter</span>
+                    </a></li>
+                <li><a href="#projects">
+                        <img src="project.png" alt="Projekt" />
+                        <span>Projekt</span>
+                    </a></li>
+                <li><a href="#contact">
+                        <img src="call.png" alt="Kontakt" />
+                        <span>Kontakt</span>
+                    </a></li>
+            </ul>
+
+        </nav>
+        <button onclick="toggleDarkMode()" class="next-button">
+            Dark Mode
+        </button>
+    </div>
+
+
+    <!-- Huvudinnehåll -->
+    <div class="main-content">
+        <!-- Första sidan - Om mig -->
+        <div id="home" class="section">
+            <div class="profile-section">
+                <!-- Flexbox container för bild och text -->
+                <div class="profile-container">
+                    <!-- Profilbild med ram -->
+                    <div class="profile-img">
+                        <img src="bild.jpg" alt="Khalid Saleh" />
+                    </div>
+                    <!-- Textsektion -->
+                    <div class="profile-text">
+                        <h1>Khalid Saleh</h1>
+                        <h2>Hej! Jag är en student inom Datateknik med ett stort intresse för webbutveckling.</h2>
+                        <p>Jag brinner för att lösa tekniska problem och utveckla innovativa lösningar. Med en stark
+                            grund inom programmering och systemutveckling arbetar jag med olika programmeringsspråk för
+                            att skapa effektiva applikationer.</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="button-nav">
+                <a href="#projects" class="next-button">Gå till Projekt</a>
+                <a href="#contact" class="next-button">Gå till Kontakt</a>
+            </nav>
+        </div>
+
+        <!-- Sektion för Kontakt -->
+        <div id="skills" class="section">
+            <h2>Färdigheter</h2>
+
+            <div class="skills-grid">
+                <div class="skill">
+                    <span>HTML & CSS</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>JavaScript</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Python</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>PHP</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>C++ / C#.NET</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>MySQL</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Git</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Jira</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <span>Agile / Scrum</span>
+                    <div class="bar">
+                        <div class="fill" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Sektion för Projekt -->
+        <div id="projects" class="section">
+            <h2>Projekt</h2>
+            <div class="projects-grid"></div>
+        </div>
+
+
+        <!-- Sektion för Kontakt -->
+        <div id="contact" class="section">
+            <h2>Kontakt</h2>
+
+            <div class="contact-card">
+                <p>
+                    Vill du komma i kontakt med mig eller veta mer om mina projekt?
+                    Tveka inte att höra av dig.
+                </p>
+
+                <ul class="contact-list">
+                    <li>
+                        📧 <a href="mailto:khalido.h@hotmail.com">khalido.h@hotmail.com</a>
+                    </li>
+                    <li>
+                        📞 <a href="tel:+46767119656">076-711 96 56</a>
+                    </li>
+                    <li>
+                        💼 <a href="https://www.linkedin.com/in/khalid-saleh-8a969a297/" target="_blank">LinkedIn</a>
+                    </li>
+                    <li>
+                        🐙 <a href="https://github.com/01khalido" target="_blank">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            document.querySelectorAll('.sidebar nav ul li a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();  // Förhindra standardlänkbeteende
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({
+                        behavior: 'smooth',  // Smidig scrollning
+                        block: 'start'       // Starta sektionen vid toppen
+                    });
+                });
+            });
+
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.sidebar nav ul li a');
+
+            // Växla mellan dark mode och ljusläge
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+            }
+
+        </script>
+        <script src="projects.js"></script>
+
+</body>
+
+</html>
