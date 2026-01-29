@@ -158,7 +158,8 @@ body.dark-mode::before {
 .next-button {
     background: rgba(255, 255, 255, 0.1);
     color: width;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* improved visibility */
     padding: 8px 16px;
     border-radius: 12px;
     cursor: pointer;
@@ -314,7 +315,6 @@ body.dark-mode::before {
     display: inline-block;
     box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
     transition: var(--transition);
-    font-weight: 600;
 }
 
 .cta-button:hover {
@@ -515,6 +515,10 @@ body.dark-mode .tech-list li {
 
     .sidebar nav ul li img {
         margin: 0;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        /* Ensure they don't shrink */
     }
 
     .next-button {
@@ -526,9 +530,12 @@ body.dark-mode .tech-list li {
         height: 40px;
         padding: 0;
         border-radius: 50%;
-        /* Circle shape */
         margin: 0 10px;
         font-size: 0;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        /* Distinct border */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
         /* Hide text */
     }
 

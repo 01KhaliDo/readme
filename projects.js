@@ -5,7 +5,7 @@ const projects = [
             "Realtidsbaserad webbchatt med privata meddelanden, skrivindikatorer och notifikationer.",
         tech: ["Node.js", "Socket.io", "JavaScript"],
         live: "https://webchatt-n93e.onrender.com",
-        github: "https://github.com/dittanamn/webbchatt"
+        github: "https://github.com/01khalido/chatt"
     },
     {
         title: "RKD Travels",
@@ -13,7 +13,7 @@ const projects = [
             "Resebokningsplattform med sökning, bokning och användarhantering.",
         tech: ["HTML", "CSS", "JavaScript", "Python", "MySQL", "AWS"],
         live: "",
-        github: "https://github.com/dittanamn/rkd-travels"
+        github: "https://github.com/01khalido/rkd-travels"
     }
 ];
 
