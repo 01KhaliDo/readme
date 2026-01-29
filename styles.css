@@ -71,18 +71,20 @@ body.dark-mode::before {
 .sidebar {
     width: 80px;
     position: fixed;
-    top: 20px;
-    left: 20px;
-    bottom: 20px;
-    height: calc(100vh - 40px);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
     background: var(--sidebar-bg);
     /* Opaque for contrast or slightly glass depending on pref */
-    border-radius: 20px;
+    border-radius: 0;
+    /* No rounded corners on the main container */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px 0 50px 0;
+    /* More space at bottom */
     z-index: 1000;
     box-shadow: var(--shadow-md);
     transition: var(--transition);
@@ -156,9 +158,9 @@ body.dark-mode::before {
 
 /* Dark Mode Toggle - Integrated nicely */
 .next-button {
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
     color: width;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: none;
     /* improved visibility */
     padding: 8px 16px;
     border-radius: 12px;
@@ -253,11 +255,17 @@ body.dark-mode::before {
     display: flex;
     align-items: center;
     gap: 60px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    /* Prevent wrapping on desktop to stop jumping */
 }
+
+/* On smaller screens, allow wrapping manually via media query if needed, 
+   but for the sidebar issue, we want stability. */
 
 .profile-img {
     position: relative;
+    /* Fixed dimensions that won't shrink */
+    flex: 0 0 300px;
     width: 300px;
     height: 300px;
     border-radius: 50%;
@@ -449,32 +457,79 @@ body.dark-mode .tech-list li {
 }
 
 /* Contact */
+/* Contact */
 .contact-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(var(--blur));
     border-radius: 20px;
-    padding: 40px;
-    max-width: 700px;
+    padding: 50px;
+    max-width: 800px;
+    margin: 0;
+    /* Left align it */
     box-shadow: var(--shadow-md);
+    text-align: left;
+}
+
+.contact-card p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* One column for all */
+    gap: 20px;
+}
+
+/* Make the first item (Email) span 2 columns if space permits */
+
+
+@media (max-width: 600px) {
+    .contact-list li:first-child {
+        grid-column: auto;
+        /* Reset on mobile */
+    }
 }
 
 .contact-list li {
-    font-size: 1.2em;
-    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.5);
+    /* Slight background for items */
+    padding: 20px;
+    border-radius: 15px;
+    transition: var(--transition);
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    border: 1px solid transparent;
 }
+
+body.dark-mode .contact-list li {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
 
 .contact-list li a {
     color: var(--text-color);
     text-decoration: none;
-    margin-left: 10px;
-    transition: var(--transition);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: flex-start;
 }
 
-.contact-list li a:hover {
-    color: var(--primary-color);
+/* Make emojis/icons larger */
+.contact-list li a::before {
+    font-size: 1.5rem;
 }
 
 /* Mobile Responsiveness */
@@ -532,9 +587,7 @@ body.dark-mode .tech-list li {
         border-radius: 50%;
         margin: 0 10px;
         font-size: 0;
-        border: 2px solid rgba(255, 255, 255, 0.6);
-        /* Distinct border */
-        background: rgba(255, 255, 255, 0.1);
+        background: transparent !important;
         backdrop-filter: blur(4px);
         /* Hide text */
     }
@@ -558,12 +611,16 @@ body.dark-mode .tech-list li {
 
     .profile-container {
         flex-direction: column;
+        flex-wrap: wrap;
+        /* Re-enable wrap/stacking for mobile */
         text-align: center;
         gap: 30px;
         justify-content: center;
     }
 
     .profile-img {
+        flex: 0 0 auto;
+        /* Override fixed flex from desktop */
         width: 200px;
         height: 200px;
         margin: 0 auto;

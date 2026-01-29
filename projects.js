@@ -14,6 +14,14 @@ const projects = [
         tech: ["HTML", "CSS", "JavaScript", "Python", "MySQL", "AWS"],
         live: "",
         github: "https://github.com/01khalido/rkd-travels"
+    },
+    {
+        title: "Face Recognition",
+        description:
+            "Ett system som använder webbkamera för att detektera och känna igen ansikten samt tränar automatiskt om modellen när ny data läggs till.",
+        tech: ["Python", "OpenCV", "NumPy", "Haar Cascade", "LBPH Face Recognizer"],
+        live: "",
+        github: "https://github.com/01khalido/Face-recognition-system"
     }
 ];
 

@@ -14,7 +14,7 @@ const skillsContainer = document.querySelector(".skills-grid");
 
 skills.forEach(skill => {
     skillsContainer.innerHTML += `
-        <div class="skill2222">
+        <div class="skill">
             <span>${skill.name}</span>
             <div class="bar">
                 <div class="fill" style="width: ${skill.level}%"></div>
