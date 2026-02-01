@@ -157,41 +157,62 @@ body.dark-mode::before {
 }
 
 /* Dark Mode Toggle - Integrated nicely */
-.next-button {
+/* Dark Mode Toggle - Integrated nicely */
+/* Controls Container (Split Button) */
+.controls-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    background: rgba(108, 99, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 5px;
+    box-shadow: var(--shadow-sm);
+}
+
+.control-btn {
     background: transparent;
-    color: width;
     border: none;
-    /* improved visibility */
+    color: var(--text-color);
     padding: 8px 16px;
-    border-radius: 12px;
     cursor: pointer;
     font-size: 0.9em;
-    color: white;
+    font-weight: 500;
     transition: var(--transition);
-    white-space: nowrap;
-    overflow: hidden;
-    margin: 0 10px;
-    width: calc(100% - 20px);
-    text-align: center;
-    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 20px;
 }
 
-.sidebar:not(:hover) .next-button {
-    text-overflow: clip;
-    width: 40px;
-    padding: 8px 0;
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.separator {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 5px;
+}
+
+/* Icons */
+/* Icons */
+.next-button::before {
     content: '🌙';
-    /* Placeholder if we used ::before, but keeping simple for now */
-    font-size: 0;
-    /* Hide text when collapsed */
+    font-size: 1.2em;
 }
 
-.sidebar:not(:hover) .next-button::after {
-    content: '🌓';
-    font-size: 16px;
+body.dark-mode .next-button::before {
+    content: '🔆';
 }
 
-.next-button:hover {
+.next-button:hover,
+.lang-button:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
@@ -576,25 +597,15 @@ body.dark-mode .contact-list li {
         /* Ensure they don't shrink */
     }
 
-    .next-button {
-        display: flex;
-        /* Show it on mobile */
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        border-radius: 50%;
-        margin: 0 10px;
-        font-size: 0;
-        background: transparent !important;
-        backdrop-filter: blur(4px);
-        /* Hide text */
+    .controls-container {
+        top: 20px;
+        right: 20px;
+        padding: 3px;
     }
 
-    .next-button::after {
-        content: '🌓';
-        font-size: 1.2rem;
+    .control-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
     }
 
     .main-content {

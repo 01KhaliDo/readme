@@ -12,13 +12,19 @@ const skills = [
 
 const skillsContainer = document.querySelector(".skills-grid");
 
-skills.forEach(skill => {
-    skillsContainer.innerHTML += `
-        <div class="skill">
-            <span>${skill.name}</span>
-            <div class="bar">
-                <div class="fill" style="width: ${skill.level}%"></div>
+function renderSkills() {
+    skillsContainer.innerHTML = "";
+    skills.forEach(skill => {
+        skillsContainer.innerHTML += `
+            <div class="skill">
+                <span>${skill.name}</span>
+                <div class="bar">
+                    <div class="fill" style="width: ${skill.level}%"></div>
+                </div>
             </div>
-        </div>
-    `;
-});
+        `;
+    });
+}
+
+// Initial render
+renderSkills();

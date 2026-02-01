@@ -1,0 +1,40 @@
+const translations = {
+    sv: {
+        nav_home: "Hem",
+        nav_skills: "Färdigheter",
+        nav_projects: "Projekt",
+        nav_contact: "Kontakt",
+        hero_title: "Khalid Saleh",
+        hero_subtitle: "Hej! Jag är en student inom Datateknik med ett stort intresse för webbutveckling.",
+        hero_desc: "Jag brinner för att lösa tekniska problem och utveckla innovativa lösningar. Med en stark grund inom programmering och systemutveckling arbetar jag med olika programmeringsspråk för att skapa effektiva applikationer.",
+        hero_cta_projects: "Gå till Projekt",
+        hero_cta_contact: "Gå till Kontakt",
+        section_skills: "Färdigheter",
+        section_projects: "Projekt",
+        section_contact: "Kontakt",
+        contact_text: "Vill du komma i kontakt med mig eller veta mer om mina projekt? Tveka inte att höra av dig.",
+        project_link_live: "Live demo",
+        project_link_github: "GitHub",
+        toggle_dark: "Dark Mode",
+        toggle_light: "Light Mode"
+    },
+    en: {
+        nav_home: "Home",
+        nav_skills: "Skills",
+        nav_projects: "Projects",
+        nav_contact: "Contact",
+        hero_title: "Khalid Saleh",
+        hero_subtitle: "Hello! I am a Computer Engineering student with a strong interest in web development.",
+        hero_desc: "I am passionate about solving technical problems and developing innovative solutions. With a strong foundation in programming and system development, I work with various programming languages to build efficient applications.",
+        hero_cta_projects: "Go to Projects",
+        hero_cta_contact: "Go to Contact",
+        section_skills: "Skills",
+        section_projects: "Projects",
+        section_contact: "Contact",
+        contact_text: "Do you want to get in touch with me or know more about my projects? Don't hesitate to reach out.",
+        project_link_live: "Live demo",
+        project_link_github: "GitHub",
+        toggle_dark: "Dark Mode",
+        toggle_light: "Light Mode"
+    }
+};

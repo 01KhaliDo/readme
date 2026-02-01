@@ -16,28 +16,27 @@
         <nav>
             <ul>
                 <li><a href="#home">
-                        <img src="home.png" alt="Hem" />
-                        <span>Hem</span>
+                        <img src="icons/home.png" alt="Hem" />
+                        <span data-i18n="nav_home">Hem</span>
                     </a></li>
                 <li><a href="#skills">
-                        <img src="code.png" alt="Färdigheter" />
-                        <span>Färdigheter</span>
+                        <img src="icons/code.png" alt="Färdigheter" />
+                        <span data-i18n="nav_skills">Färdigheter</span>
                     </a></li>
                 <li><a href="#projects">
-                        <img src="project.png" alt="Projekt" />
-                        <span>Projekt</span>
+                        <img src="icons/project.png" alt="Projekt" />
+                        <span data-i18n="nav_projects">Projekt</span>
                     </a></li>
                 <li><a href="#contact">
-                        <img src="call.png" alt="Kontakt" />
-                        <span>Kontakt</span>
+                        <img src="icons/call.png" alt="Kontakt" />
+                        <span data-i18n="nav_contact">Kontakt</span>
                     </a></li>
             </ul>
 
         </nav>
-        <button onclick="toggleDarkMode()" class="next-button">
-            Dark Mode
-        </button>
     </div>
+
+
 
 
     <!-- Huvudinnehåll -->
@@ -49,18 +48,20 @@
                 <div class="profile-container">
                     <!-- Profilbild med ram -->
                     <div class="profile-img">
-                        <img src="bild.jpg" alt="Khalid Saleh" />
+                        <img src="icons/bild.jpg" alt="Khalid Saleh" />
                     </div>
                     <!-- Textsektion -->
                     <div class="profile-text">
-                        <h1>Khalid Saleh</h1>
-                        <h3>Hej! Jag är en student inom Datateknik med ett stort intresse för webbutveckling.</h3>
-                        <p>Jag brinner för att lösa tekniska problem och utveckla innovativa lösningar. Med en stark
+                        <h1 data-i18n="hero_title">Khalid Saleh</h1>
+                        <h3 data-i18n="hero_subtitle">Hej! Jag är en student inom Datateknik med ett stort intresse för
+                            webbutveckling.</h3>
+                        <p data-i18n="hero_desc">Jag brinner för att lösa tekniska problem och utveckla innovativa
+                            lösningar. Med en stark
                             grund inom programmering och systemutveckling arbetar jag med olika programmeringsspråk för
                             att skapa effektiva applikationer.</p>
                         <nav class="button-nav">
-                            <a href="#projects" class="cta-button">Gå till Projekt</a>
-                            <a href="#contact" class="cta-button">Gå till Kontakt</a>
+                            <a href="#projects" class="cta-button" data-i18n="hero_cta_projects">Gå till Projekt</a>
+                            <a href="#contact" class="cta-button" data-i18n="hero_cta_contact">Gå till Kontakt</a>
                         </nav>
                     </div>
                 </div>
@@ -70,24 +71,24 @@
 
         <!-- Sektion för Kontakt -->
         <div id="skills" class="section">
-            <h2>Färdigheter</h2>
+            <h2 data-i18n="section_skills">Färdigheter</h2>
             <div class="skills-grid"></div>
         </div>
 
 
         <!-- Sektion för Projekt -->
         <div id="projects" class="section">
-            <h2>Projekt</h2>
+            <h2 data-i18n="section_projects">Projekt</h2>
             <div class="projects-grid"></div>
         </div>
 
 
         <!-- Sektion för Kontakt -->
         <div id="contact" class="section">
-            <h2>Kontakt</h2>
+            <h2 data-i18n="section_contact">Kontakt</h2>
 
             <div class="contact-card">
-                <p>
+                <p data-i18n="contact_text">
                     Vill du komma i kontakt med mig eller veta mer om mina projekt?
                     Tveka inte att höra av dig.
                 </p>
@@ -125,14 +126,83 @@
             const navLinks = document.querySelectorAll('.sidebar nav ul li a');
 
             // Växla mellan dark mode och ljusläge
+            // Växla mellan dark mode och ljusläge
             function toggleDarkMode() {
                 document.body.classList.toggle('dark-mode');
+                updateDarkModeText();
             }
 
+            function updateDarkModeText() {
+                const isDark = document.body.classList.contains('dark-mode');
+                const btn = document.querySelector('.next-button');
+                // We use the simpler text approach or update translations key logic
+                // For simplicity, let's just keep "Dark Mode" / "Light Mode" fixed or use the translation key
+                // Ideally: the user wants "Månen och Solen" (Moon and Sun) - visual mostly.
+                // The text "Dark Mode" might be confusing if it stays "Dark Mode" when in Dark Mode.
+                // It usually says "Light Mode" to switch back.
+
+                // Let's use the translation key logic
+                const key = isDark ? 'toggle_light' : 'toggle_dark';
+                btn.setAttribute('data-i18n', key);
+
+                // Trigger translation update for just this element
+                const lang = localStorage.getItem('lang') || 'sv';
+                if (translations[lang] && translations[lang][key]) {
+                    btn.textContent = translations[lang][key];
+                    // Note: textContent kills the ::before pseudo element? NO, it doesn't. 
+                    // But we might need to be careful if we replaced innerHTML. textContent is fine for text node.
+                }
+            }
+
+        </script>
+        <script src="translations.js"></script>
+        <script>
+            // Language Logic
+            let currentLang = localStorage.getItem('lang') || 'sv';
+
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('lang', lang);
+
+                // Update static text
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+
+                // Update dynamic content
+                if (typeof renderProjects === 'function') renderProjects(lang);
+                if (typeof renderSkills === 'function') renderSkills(); // Re-render skills if we ever add translations there
+
+                // Update button text
+                const langToggle = document.getElementById('lang-toggle');
+                if (langToggle) langToggle.textContent = lang === 'sv' ? 'EN' : 'SV';
+            }
+
+            function toggleLanguage() {
+                const newLang = currentLang === 'sv' ? 'en' : 'sv';
+                setLanguage(newLang);
+            }
+
+            // Initialize
+            document.addEventListener('DOMContentLoaded', () => {
+                setLanguage(currentLang);
+            });
         </script>
         <script src="skills.js"></script>
         <script src="projects.js"></script>
 
+        <div class="controls-container">
+            <button onclick="toggleLanguage()" class="control-btn" id="lang-toggle">
+                EN
+            </button>
+            <div class="separator"></div>
+            <button onclick="toggleDarkMode()" class="control-btn next-button" data-i18n="toggle_dark">
+                Dark Mode
+            </button>
+        </div>
 </body>
 
 </html>
