@@ -319,7 +319,7 @@ body.dark-mode .social-icon-hero {
 
 /* --- Controls (Dark Mode / Lang) --- */
 .controls-container {
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 20px;
     z-index: 2000;
