@@ -6,7 +6,7 @@ const projects = [
             en: "Real-time web chat with private messaging, typing indicators, and notifications."
         },
         tech: ["Node.js", "Socket.io", "JavaScript"],
-        live: "https://webchatt-n93e.onrender.com",
+        live: "https://webchat-xso6.onrender.com",
         github: "https://github.com/01khalido/chatt"
     },
     {
