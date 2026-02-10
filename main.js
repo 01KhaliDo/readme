@@ -72,12 +72,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update UI Controls
         updateLanguageButtonText(lang);
         updateDarkModeButtonText();
+
+        // Update CV Link
+        const cvLink = document.getElementById('cv-link');
+        if (cvLink) {
+            cvLink.href = lang === 'en' ? 'cv/cv-en.pdf' : 'cv/cv-se.pdf';
+        }
     }
 
     function updateLanguageButtonText(lang) {
         const langToggle = document.getElementById(CONFIG.selectors.langToggle);
         if (langToggle) {
-            langToggle.textContent = lang === 'sv' ? 'EN' : 'SV';
+            const targetLang = lang === 'sv' ? 'en' : 'sv';
+            const iconPath = targetLang === 'en' ? 'icons/en.png' : 'icons/sv.png';
+            const altText = targetLang === 'en' ? 'Switch to English' : 'Byt till Svenska';
+
+            langToggle.innerHTML = `<img src="${iconPath}" alt="${altText}" class="lang-flag" />`;
         }
     }
 

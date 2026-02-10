@@ -359,7 +359,6 @@ body.dark-mode .social-icon-hero {
     margin: 0 5px;
 }
 
-/* Toggle Icons */
 .next-button::before {
     content: '🌙';
     font-size: 1.2em;
@@ -372,6 +371,12 @@ body.dark-mode .next-button::before {
 .next-button:hover,
 .lang-button:hover {
     background: rgba(255, 255, 255, 0.2);
+}
+
+.lang-flag {
+    width: 28px;
+    height: 28px;
+    display: block;
 }
 
 /* --- Skills --- */
@@ -689,8 +694,12 @@ body.dark-mode .social-icon {
         justify-content: center;
     }
 
+    .contact-list li a {
+        font-size: 0.9rem;
+    }
+
     .cta-button {
-        width: 175px;
+        width: 185px;
         text-align: center;
         box-sizing: border-box;
     }
